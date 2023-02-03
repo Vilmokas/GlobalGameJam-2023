@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     public List<GameObject> plantPrefabs;
     public bool plantSeed = false;
     public float rootGrowWait = 3f;
+    public GameObject nutrientPrefab;
+    public float nutrientSpawnHeight = 4f;
+    public float nutrientSpawnWidth = 8f;
+    public GameObject nutrient;
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +74,26 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartRootGrow()
     {
+        SpawnNutrient();
         yield return new WaitForSeconds(rootGrowWait);
         moveRoot = true;
+    }
+
+    public void SpawnNutrient()
+    {
+        if (nutrient != null)
+        {
+            DestroyNutrient();
+        }
+        float x = Random.Range(-nutrientSpawnWidth, nutrientSpawnWidth);
+        float y = Random.Range(-nutrientSpawnHeight, 0);
+
+        nutrient = GameObject.Instantiate(nutrientPrefab, new Vector3(x, y, 0), Quaternion.identity);
+    }
+
+    public void DestroyNutrient()
+    {
+        Destroy(nutrient);
+        nutrient = null;
     }
 }
