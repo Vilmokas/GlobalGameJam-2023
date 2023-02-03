@@ -5,10 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public float rootSpeed = 5f;
-    public List<Root> roots;
-    public int currentRoot = 0;
+    public Root root = null;
     public bool moveRoot = false;
     public int currentSeed = 0;
+    public List<GameObject> plantPrefabs;
+    public bool plantSeed = false;
+    public float rootGrowWait = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,28 +22,55 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         MoveRoot();
+        PlantSeed();
     }
 
     void MoveRoot()
     {
-        if (moveRoot)
+        if (root != null)
         {
-            float right = Input.GetAxisRaw("Horizontal");
-            float up = Input.GetAxisRaw("Vertical");
-
-            if (right != 0 || up != 0)
+            if (moveRoot)
             {
-                roots[currentRoot].SetDirection(right, up);
+                float right = Input.GetAxisRaw("Horizontal");
+                float up = Input.GetAxisRaw("Vertical");
+
+                if (right != 0 || up != 0)
+                {
+                    root.SetDirection(right, up);
+                }
             }
-        }
-        else
-        {
-            roots[currentRoot].SetDirection(0, 0);
+            else
+            {
+                root.SetDirection(0, 0);
+            }
         }
     }
 
     public void SelectSeed(int seedId)
     {
         currentSeed = seedId;
+        plantSeed = true;
+    }
+
+    void PlantSeed()
+    {
+        if (plantSeed)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameObject plant = GameObject.Instantiate(plantPrefabs[currentSeed], mousePosition, Quaternion.identity);
+                root = plant.GetComponentInChildren<Root>();
+                plantSeed = false;
+                StartCoroutine(StartRootGrow());
+            }
+        }
+    }
+
+    IEnumerator StartRootGrow()
+    {
+        yield return new WaitForSeconds(rootGrowWait);
+        moveRoot = true;
     }
 }
