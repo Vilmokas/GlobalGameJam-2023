@@ -822,7 +822,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1432,6 +1432,11 @@ MonoBehaviour:
   currentSeed: 0
   plantPrefabs:
   - {fileID: 1075570186931989153, guid: a9b503014a536fc41add66cc5f7eaede, type: 3}
+  - {fileID: 1075570186931989153, guid: 4b443afab60d7954c8b5067d7571fe25, type: 3}
+  - {fileID: 1075570186931989153, guid: 047909e76d85d044b94ed8abc3121f14, type: 3}
+  - {fileID: 1075570186931989153, guid: eff72f620cba49442a9ad28a88ce89eb, type: 3}
+  - {fileID: 1075570186931989153, guid: fe62acae9cc4176419118462873abc38, type: 3}
+  - {fileID: 1075570186931989153, guid: 7edbb8c3a80355b4b955f18a2cd0de44, type: 3}
   plantSeed: 0
   rootGrowWait: 0.5
 --- !u!1 &1174076417
