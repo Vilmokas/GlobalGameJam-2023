@@ -60,10 +60,22 @@ public class Root : MonoBehaviour
             Debug.Log("...obstacle");
             StopRoot();
         }
+        if (collision.gameObject.CompareTag("nutrient"))
+        {
+            Debug.Log("...nutrient");
+            Destroy(collision.gameObject);
+            GrowPlant();
+        }
+
     }
 
     void StopRoot()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().moveRoot = false;
+    }
+
+    void GrowPlant()
+    {
+        GetComponentInParent<Plant>().GrowPlant();
     }
 }
