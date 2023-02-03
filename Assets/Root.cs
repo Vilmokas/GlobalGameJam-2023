@@ -51,4 +51,19 @@ public class Root : MonoBehaviour
             up = u;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("collision enter...");
+        if (collision.gameObject.CompareTag("obstacle"))
+        {
+            Debug.Log("...obstacle");
+            StopRoot();
+        }
+    }
+
+    void StopRoot()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManager>().moveRoot = false;
+    }
 }
