@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public List<Root> roots;
     public int currentRoot = 0;
     public bool moveRoot = false;
+    public int currentSeed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +38,10 @@ public class GameManager : MonoBehaviour
         {
             roots[currentRoot].SetDirection(0, 0);
         }
+    }
+
+    public void SelectSeed(int seedId)
+    {
+        currentSeed = seedId;
     }
 }
