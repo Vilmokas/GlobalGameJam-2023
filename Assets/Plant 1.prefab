@@ -72,13 +72,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.80667865, g: 0.9528302, b: 0.5258544, a: 1}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -388264841, guid: 7cabe31f6643b5c4cbb91a17ef14d132, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.99, y: 1.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -130,7 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef209338a48bb441ab4bf4110e5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
+  sprites:
+  - {fileID: -388264841, guid: 7cabe31f6643b5c4cbb91a17ef14d132, type: 3}
+  - {fileID: 1211700508, guid: 7cabe31f6643b5c4cbb91a17ef14d132, type: 3}
+  - {fileID: -1347905689, guid: 7cabe31f6643b5c4cbb91a17ef14d132, type: 3}
   sprite: {fileID: 0}
   currentGrowthStage: 0
 --- !u!1 &4008288670087401268
@@ -283,7 +286,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 00d1be15a2b5edd4fb911dc025851539, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -303,7 +306,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Time: Infinity
   m_Parameters:
     serializedVersion: 3
@@ -313,7 +316,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.40000153
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -355,7 +358,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1

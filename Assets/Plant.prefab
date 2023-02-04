@@ -130,6 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef209338a48bb441ab4bf4110e5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites: []
+  sprite: {fileID: 0}
+  currentGrowthStage: 0
 --- !u!1 &4008288670087401268
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +313,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.3
         inSlope: 0
         outSlope: 0
         tangentMode: 0
