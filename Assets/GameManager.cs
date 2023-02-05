@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public List<TMP_Text> seedText;
     public List<Button> seedButtons;
     public GameObject ghostPlant;
+    public GameObject growStartText;
 
     // Start is called before the first frame update
     void Start()
@@ -99,8 +100,23 @@ public class GameManager : MonoBehaviour
     IEnumerator StartRootGrow()
     {
         SpawnNutrient();
+        UpdateStartGrowText(true, "3");
         yield return new WaitForSeconds(rootGrowWait);
+        UpdateStartGrowText(true, "2");
+        yield return new WaitForSeconds(rootGrowWait);
+        UpdateStartGrowText(true, "1");
+        yield return new WaitForSeconds(rootGrowWait);
+        UpdateStartGrowText(true, "GROW!");
+        yield return new WaitForSeconds(0.5f);
+        UpdateStartGrowText(false, "not active");
         moveRoot = true;
+        root.SetDirection(0, -1);
+    }
+
+    void UpdateStartGrowText(bool enable, string text)
+    {
+        growStartText.SetActive(enable);
+        growStartText.GetComponent<TMP_Text>().SetText(text);
     }
 
     public void SpawnNutrient()
