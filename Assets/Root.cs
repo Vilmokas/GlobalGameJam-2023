@@ -75,6 +75,7 @@ public class Root : MonoBehaviour
     void StopRoot()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().moveRoot = false;
+        GameObject.Find("GameManager").GetComponent<GameManager>().ShakeCamera();
     }
 
     void GrowPlant()

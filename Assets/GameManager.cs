@@ -216,4 +216,9 @@ public class GameManager : MonoBehaviour
     {
         ghostPlant.transform.position = new Vector3(x, ghostPlant.transform.position.y, ghostPlant.transform.position.z);
     }
+
+    public void ShakeCamera()
+    {
+        Camera.main.gameObject.GetComponent<Animation>().Play();
+    }
 }

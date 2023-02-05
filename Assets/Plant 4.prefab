@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991363273483677572}
   - component: {fileID: 2951901003099169179}
+  - component: {fileID: 76352066525826854}
   m_Layer: 0
   m_Name: Plant sprite
   m_TagString: Untagged
@@ -84,6 +85,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &76352066525826854
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153342205068403947}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4c1a716df93ad2d48a7a8efb75f6fd54, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4c1a716df93ad2d48a7a8efb75f6fd54, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1075570186931989153
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +154,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   currentGrowthStage: 0
   seedId: 3
+  seedDropped: 0
 --- !u!1 &4008288670087401268
 GameObject:
   m_ObjectHideFlags: 0

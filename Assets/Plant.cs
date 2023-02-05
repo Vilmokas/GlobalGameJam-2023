@@ -51,5 +51,11 @@ public class Plant : MonoBehaviour
                 GameObject.Find("GameManager").GetComponent<GameManager>().moveRoot = false;
             }
         }
+        GrowAnimation();
+    }
+
+    void GrowAnimation()
+    {
+        GetComponentInChildren<Animation>().Play();
     }
 }
