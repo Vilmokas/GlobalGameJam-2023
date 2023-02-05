@@ -1,11 +1,11 @@
-# Game for Global Game Jam 2022
+# Game for Global Game Jam 2023
 
-## Theme: TBA
+## Theme: Roots
 
 ## Game Page:
 
-[TBA](https://globalgamejam.org/users/vilmantas-jakni%C5%ABnas)
+[Overgrown](https://globalgamejam.org/2023/games/tba-2)
 
 ## Trailer:
 
-[TBA](https://www.youtube.com/@vilmokas/videos)
+[Global Game Jam 2023 - Overgrown](https://www.youtube.com/watch?v=qPiR-BphCs8)
