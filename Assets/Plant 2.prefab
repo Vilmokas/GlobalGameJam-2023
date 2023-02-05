@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991363273483677572}
   - component: {fileID: 2951901003099169179}
+  - component: {fileID: 2186549723494454893}
   m_Layer: 0
   m_Name: Plant sprite
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 153342205068403947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8074793263432834075}
@@ -84,6 +85,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &2186549723494454893
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153342205068403947}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4c1a716df93ad2d48a7a8efb75f6fd54, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4c1a716df93ad2d48a7a8efb75f6fd54, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1075570186931989153
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +153,8 @@ MonoBehaviour:
   - {fileID: -1483911836, guid: 7cabe31f6643b5c4cbb91a17ef14d132, type: 3}
   sprite: {fileID: 0}
   currentGrowthStage: 0
+  seedId: 1
+  seedDropped: 0
 --- !u!1 &4008288670087401268
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +305,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b17f99a34bbd60f4299f721831ec0ec0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -306,7 +325,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Time: Infinity
   m_Parameters:
     serializedVersion: 3
@@ -328,8 +347,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.91764706, g: 0.83137256, b: 0.25490198, a: 1}
-      key1: {r: 0.91764706, g: 0.83137256, b: 0.25490198, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -358,7 +377,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1

@@ -54,18 +54,22 @@ public class Root : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision enter...");
         if (collision.gameObject.CompareTag("obstacle"))
         {
-            Debug.Log("...obstacle");
             GameObject.Find("GameManager").GetComponent<GameManager>().DestroyNutrient();
+            GameObject.Find("GameManager").GetComponent<GameManager>().DestroySeed();
             StopRoot();
+            GameObject.Find("GameManager").GetComponent<GameManager>().PlaySound(2);
         }
         if (collision.gameObject.CompareTag("nutrient"))
         {
-            Debug.Log("...nutrient");
             GameObject.Find("GameManager").GetComponent<GameManager>().SpawnNutrient();
             GrowPlant();
+            GameObject.Find("GameManager").GetComponent<GameManager>().PlaySound(3);
+        }
+        if (collision.gameObject.CompareTag("seed"))
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().CollectSeed();
         }
 
     }
@@ -73,6 +77,8 @@ public class Root : MonoBehaviour
     void StopRoot()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().moveRoot = false;
+        GameObject.Find("GameManager").GetComponent<GameManager>().ShakeCamera();
+        GameObject.Find("GameManager").GetComponent<AudioSource>().Stop();
     }
 
     void GrowPlant()
