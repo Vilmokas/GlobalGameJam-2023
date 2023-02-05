@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,11 +17,18 @@ public class GameManager : MonoBehaviour
     public float nutrientSpawnHeight = 4f;
     public float nutrientSpawnWidth = 8f;
     public GameObject nutrient;
+    public GameObject seedPrefab;
+    public List<Sprite> seedSprites;
+    public GameObject seed;
+    public int[] seedCount;
+    public List<TMP_Text> seedText;
+    public List<Button> seedButtons;
+    public GameObject ghostPlant;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateSeedCountText();
     }
 
     // Update is called once per frame
@@ -52,8 +61,21 @@ public class GameManager : MonoBehaviour
 
     public void SelectSeed(int seedId)
     {
+        if (seedId != 0)
+        {
+            if (seedCount[seedId - 1] != 0)
+            {
+                seedCount[seedId - 1]--;
+                UpdateSeedCountText();
+            }
+            else
+            {
+                return;
+            }
+        }
         currentSeed = seedId;
         plantSeed = true;
+        EnableGhostPlant(true);
     }
 
     void PlantSeed()
@@ -61,12 +83,14 @@ public class GameManager : MonoBehaviour
         if (plantSeed)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            UpdateGhostPlantPosition(mousePosition.x);
 
             if (Input.GetMouseButtonDown(0))
             {
-                GameObject plant = GameObject.Instantiate(plantPrefabs[currentSeed], mousePosition, Quaternion.identity);
+                GameObject plant = GameObject.Instantiate(plantPrefabs[currentSeed], ghostPlant.transform.position, Quaternion.identity);
                 root = plant.GetComponentInChildren<Root>();
                 plantSeed = false;
+                EnableGhostPlant(false);
                 StartCoroutine(StartRootGrow());
             }
         }
@@ -91,9 +115,86 @@ public class GameManager : MonoBehaviour
         nutrient = GameObject.Instantiate(nutrientPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
 
+    public void SpawnSeed(int seedId)
+    {
+        if (seed != null)
+        {
+            DestroySeed();
+        }
+        float x = Random.Range(-nutrientSpawnWidth, nutrientSpawnWidth);
+        float y = Random.Range(-nutrientSpawnHeight, 0);
+
+        seed = GameObject.Instantiate(seedPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        seed.GetComponentInChildren<SpriteRenderer>().sprite = seedSprites[seedId];
+    }
+
+    public void DestroySeed()
+    {
+        Destroy(seed);
+        seed = null;
+    }
+
     public void DestroyNutrient()
     {
         Destroy(nutrient);
         nutrient = null;
+    }
+
+    public void CollectSeed()
+    {
+        DestroySeed();
+        seedCount[root.GetComponentInParent<Plant>().seedDropped]++;
+        UpdateSeedCountText();
+    }
+
+    public void UpdateSeedCountText()
+    {
+        seedText[0].SetText(seedCount[0].ToString());
+        seedText[1].SetText(seedCount[1].ToString());
+        seedText[2].SetText(seedCount[2].ToString());
+        seedText[3].SetText(seedCount[3].ToString());
+
+        if (seedCount[0] == 0)
+        {
+            seedButtons[0].interactable = false;
+        }
+        else
+        {
+            seedButtons[0].interactable = true;
+        }
+        if (seedCount[1] == 0)
+        {
+            seedButtons[1].interactable = false;
+        }
+        else
+        {
+            seedButtons[1].interactable = true;
+        }
+        if (seedCount[2] == 0)
+        {
+            seedButtons[2].interactable = false;
+        }
+        else
+        {
+            seedButtons[2].interactable = true;
+        }
+        if (seedCount[3] == 0)
+        {
+            seedButtons[3].interactable = false;
+        }
+        else
+        {
+            seedButtons[3].interactable = true;
+        }
+    }
+
+    void EnableGhostPlant(bool enable)
+    {
+        ghostPlant.SetActive(enable);
+    }
+
+    void UpdateGhostPlantPosition(float x)
+    {
+        ghostPlant.transform.position = new Vector3(x, ghostPlant.transform.position.y, ghostPlant.transform.position.z);
     }
 }

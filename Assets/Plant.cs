@@ -7,6 +7,8 @@ public class Plant : MonoBehaviour
     public List<Sprite> sprites;
     public SpriteRenderer sprite;
     public int currentGrowthStage = 0;
+    public int seedId;
+    public int seedDropped;
 
     // Start is called before the first frame update
     void Start()
@@ -28,15 +30,25 @@ public class Plant : MonoBehaviour
             sprite.sprite = sprites[currentGrowthStage];
             if (currentGrowthStage == 1)
             {
-                // TODO: spawn same seed
+                if (seedId != 0)
+                {
+                    seedDropped = seedId - 1;
+                    GameObject.Find("GameManager").GetComponent<GameManager>().SpawnSeed(seedDropped);
+                }
             }
             if (currentGrowthStage == 2)
             {
-                // TODO: spawn bigger seed
+                if (seedId != 4)
+                {
+                    seedDropped = seedId;
+                    GameObject.Find("GameManager").GetComponent<GameManager>().SpawnSeed(seedDropped);
+                }
             }
             if (currentGrowthStage == 3)
             {
-                // TODO: stop moving plant
+                GameObject.Find("GameManager").GetComponent<GameManager>().DestroyNutrient();
+                GameObject.Find("GameManager").GetComponent<GameManager>().DestroySeed();
+                GameObject.Find("GameManager").GetComponent<GameManager>().moveRoot = false;
             }
         }
     }

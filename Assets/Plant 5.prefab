@@ -136,6 +136,7 @@ MonoBehaviour:
   - {fileID: 979296228, guid: 7cabe31f6643b5c4cbb91a17ef14d132, type: 3}
   sprite: {fileID: 0}
   currentGrowthStage: 0
+  seedId: 4
 --- !u!1 &4008288670087401268
 GameObject:
   m_ObjectHideFlags: 0
