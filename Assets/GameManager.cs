@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject ghostPlant;
     public GameObject growStartText;
     public int rootNum = 0;
+    public List<AudioClip> sounds;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
         currentSeed = seedId;
         plantSeed = true;
         EnableGhostPlant(true);
+        PlaySound(0);
     }
 
     void PlantSeed()
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
                 plantSeed = false;
                 EnableGhostPlant(false);
                 StartCoroutine(StartRootGrow());
+                PlaySound(5);
             }
         }
     }
@@ -114,6 +117,7 @@ public class GameManager : MonoBehaviour
         UpdateStartGrowText(false, "not active");
         moveRoot = true;
         root.SetDirection(0, -1);
+        GetComponent<AudioSource>().Play();
     }
 
     void UpdateStartGrowText(bool enable, string text)
@@ -164,6 +168,7 @@ public class GameManager : MonoBehaviour
         DestroySeed();
         seedCount[root.GetComponentInParent<Plant>().seedDropped]++;
         UpdateSeedCountText();
+        PlaySound(4);
     }
 
     public void UpdateSeedCountText()
@@ -220,5 +225,18 @@ public class GameManager : MonoBehaviour
     public void ShakeCamera()
     {
         Camera.main.gameObject.GetComponent<Animation>().Play();
+    }
+
+    public void PlaySound(int soundId)
+    {
+        AudioSource sound = GetComponent<AudioSource>();
+        if (soundId == 3)
+        {
+            sound.PlayOneShot(sounds[soundId], 0.3f);
+        }
+        else
+        {
+            sound.PlayOneShot(sounds[soundId]);
+        }
     }
 }

@@ -52,6 +52,7 @@ public class Plant : MonoBehaviour
             }
         }
         GrowAnimation();
+        GameObject.Find("GameManager").GetComponent<GameManager>().PlaySound(6);
     }
 
     void GrowAnimation()

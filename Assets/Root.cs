@@ -59,11 +59,13 @@ public class Root : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().DestroyNutrient();
             GameObject.Find("GameManager").GetComponent<GameManager>().DestroySeed();
             StopRoot();
+            GameObject.Find("GameManager").GetComponent<GameManager>().PlaySound(2);
         }
         if (collision.gameObject.CompareTag("nutrient"))
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().SpawnNutrient();
             GrowPlant();
+            GameObject.Find("GameManager").GetComponent<GameManager>().PlaySound(3);
         }
         if (collision.gameObject.CompareTag("seed"))
         {
@@ -76,6 +78,7 @@ public class Root : MonoBehaviour
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().moveRoot = false;
         GameObject.Find("GameManager").GetComponent<GameManager>().ShakeCamera();
+        GameObject.Find("GameManager").GetComponent<AudioSource>().Stop();
     }
 
     void GrowPlant()
