@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public List<Button> seedButtons;
     public GameObject ghostPlant;
     public GameObject growStartText;
+    public int rootNum = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +91,8 @@ public class GameManager : MonoBehaviour
             {
                 GameObject plant = GameObject.Instantiate(plantPrefabs[currentSeed], ghostPlant.transform.position, Quaternion.identity);
                 root = plant.GetComponentInChildren<Root>();
+                rootNum++;
+                root.GetComponentInChildren<TrailRenderer>().sortingOrder = rootNum;
                 plantSeed = false;
                 EnableGhostPlant(false);
                 StartCoroutine(StartRootGrow());
