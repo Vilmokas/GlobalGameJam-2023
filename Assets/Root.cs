@@ -54,16 +54,13 @@ public class Root : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision enter...");
         if (collision.gameObject.CompareTag("obstacle"))
         {
-            Debug.Log("...obstacle");
             GameObject.Find("GameManager").GetComponent<GameManager>().DestroyNutrient();
             StopRoot();
         }
         if (collision.gameObject.CompareTag("nutrient"))
         {
-            Debug.Log("...nutrient");
             GameObject.Find("GameManager").GetComponent<GameManager>().SpawnNutrient();
             GrowPlant();
         }

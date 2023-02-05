@@ -23,6 +23,21 @@ public class Plant : MonoBehaviour
     public void GrowPlant()
     {
         currentGrowthStage++;
-        // TODO: add sprite change and growth limit
+        if (currentGrowthStage < 3)
+        {
+            sprite.sprite = sprites[currentGrowthStage];
+            if (currentGrowthStage == 1)
+            {
+                // TODO: spawn same seed
+            }
+            if (currentGrowthStage == 2)
+            {
+                // TODO: spawn bigger seed
+            }
+            if (currentGrowthStage == 3)
+            {
+                // TODO: stop moving plant
+            }
+        }
     }
 }
